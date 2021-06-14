@@ -1,4 +1,4 @@
-node {
+node('jenkinsbuildserver') {
     checkout scm
 
     docker.withRegistry('https://sprout.phdata.co.uk', 'docker') {
