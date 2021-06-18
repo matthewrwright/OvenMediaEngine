@@ -5,7 +5,7 @@ node('jenkinsbuildserver') {
 
         def customImage = docker.build("ovenmediaengine:${env.BUILD_ID}")
 
-        /* Push the container to the custom Registry */
+        /* Push the container to sprout */
         customImage.push()
         customImage.push('latest')
     }
