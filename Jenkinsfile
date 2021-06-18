@@ -1,5 +1,9 @@
 node('jenkinsbuildserver') {
+stage('Checkout'){
     checkout scm
+}
+
+stage('Build and Push'){
 
     docker.withRegistry('https://sprout.phdata.co.uk', 'docker') {
 
@@ -9,4 +13,5 @@ node('jenkinsbuildserver') {
         customImage.push()
         customImage.push('latest')
     }
+	}
 }
