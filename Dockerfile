@@ -3,7 +3,7 @@ FROM    sprout.phdata.co.uk/ubuntu:18.04 AS base
 ## Install libraries by package
 ENV     DEBIAN_FRONTEND=noninteractive
 RUN     apt-get update && apt-get install -y tzdata
-
+RUN     sed -i s/archive/gb\.archive/ /etc/apt/sources.list
 FROM    base AS build
 
 WORKDIR /tmp
@@ -25,7 +25,7 @@ ENV     OME_VERSION=master \
         PCRE2_VERSION=10.35 
 
 ## Install build utils
-RUN     apt-get -y install build-essential nasm autoconf libtool zlib1g-dev tclsh cmake curl pkg-config bc
+RUN     apt-get update && apt-get -y install build-essential nasm autoconf libtool zlib1g-dev tclsh cmake curl pkg-config bc
 
 ## Build OpenSSL
 RUN \
