@@ -1,4 +1,4 @@
-FROM    sprout.phdata.co.uk/ubuntu:18.04 AS base
+FROM    ubuntu:18.04 AS base
 
 ## Install libraries by package
 ENV     DEBIAN_FRONTEND=noninteractive
@@ -11,7 +11,7 @@ WORKDIR /tmp
 ARG     PREFIX=/opt/ovenmediaengine
 ARG     MAKEFLAGS="-j16"
 
-ENV     OME_VERSION=master \
+ENV     OME_VERSION=tp-edge-and-origin-different-machines \
         OPENSSL_VERSION=1.1.1i \
         SRTP_VERSION=2.2.0 \
         SRT_VERSION=1.4.2 \
@@ -184,7 +184,7 @@ RUN \
         DIR=/tmp/ome && \
         mkdir -p ${DIR} && \
         cd ${DIR} && \
-        curl -sLf https://github.com/AirenSoft/OvenMediaEngine/archive/${OME_VERSION}.tar.gz | tar -xz --strip-components=1 && \
+        curl -sLf https://github.com/matthewrwright/OvenMediaEngine/archive/${OME_VERSION}.tar.gz | tar -xz --strip-components=1 && \
         cd src && \
         make release
 
