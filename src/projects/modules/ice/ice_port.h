@@ -96,12 +96,14 @@ protected:
 
 		bool IsExpired() const
 		{
-			if(_lifetime_epoch_ms != 0 && _lifetime_epoch_ms < ov::Clock::NowMSec())
+			return false; // TODO: Uncomment function as soon as gStreamer supports the latest STUN consent freshness specification
+			/* if(_lifetime_epoch_ms != 0 && _lifetime_epoch_ms < ov::Clock::NowMSec())
 			{
 				return true;
 			}
 
 			return (std::chrono::system_clock::now() > expire_time);
+			*/
 		}
 
 	protected:
