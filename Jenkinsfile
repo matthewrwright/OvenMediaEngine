@@ -11,7 +11,7 @@ stage('Build and Push'){
 
         /* Push the container to sprout */
         customImage.push()
-        customImage.push('latest')
+        customImage.push('env.BRANCH_NAME')
     }
 	}
 }
